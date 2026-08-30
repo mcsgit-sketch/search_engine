@@ -5,12 +5,25 @@
 	<head> 
 
 		<title>qsearch</title>
+		<style>
+			div {
+				position: fixed;
+				top:50%;
+				left:50%;
+				translate: -50% -50%;
+
+				display: flex; 
+				gap: 5px;
+			}
+		</style>
 	</head>
 
 	<body> 
-		
-		<input type="text" placeholder="Search..">
-		<button type="submit"></button>
-		<p> I need to center the search bar</p>
+		<form>
+		<div>
+		<input style="width: 500px" type="text" placeholder="Search.." name="search">
+		<input type="submit">
+		</div>
+		</form>
 	</body> 
 </html> 
