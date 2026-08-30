@@ -1,5 +1,7 @@
 import requests 
-from parse_web import get_links
+from bs4 import BeautifulSoup
+
+
 
 # function to retrive page html
 url = "https://en.wikipedia.org/wiki/Machine_learning"
@@ -17,6 +19,13 @@ def get_html(url):
     else: 
         print(f"Failed to retrieve the page.\n Status code: {response.status_code}")
         return ""
+
+def get_links(html): 
+    links = [] 
+    soup = BeautifulSoup(html, 'html.parser')
+    for link in soup.find_all('a'):
+        links.append(link.get('href'))
+    return links
 
 def main(): 
     print(get_links(get_html(url)))
