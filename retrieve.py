@@ -1,7 +1,7 @@
 import requests 
 from bs4 import BeautifulSoup
-
-
+import sqlite3
+from langdetect import detect
 
 # function to retrive page html
 url = "https://en.wikipedia.org/wiki/Machine_learning"
@@ -9,7 +9,9 @@ url = "https://en.wikipedia.org/wiki/Machine_learning"
 custom_header = {
         "User-Agent": "MySearchEngineBot (mscgit@gmail.com)"
         }
-
+webpages = sqlite3.connect("webpages.db")
+webpages = webpages.cursor()
+webpages.execute("CREATE TABLE IF NOT EXISTS webpages(rank, url, title, text)")
 
 def get_html(url): 
     response = requests.get(url, headers=custom_header)
@@ -21,10 +23,15 @@ def get_html(url):
         return ""
 
 def get_links(html): 
-    links = [] 
+    links = set() 
     soup = BeautifulSoup(html, 'html.parser')
     for link in soup.find_all('a'):
-        links.append(link.get('href'))
+        link = link.get('href')
+        if not (str(link).startswith("http")):
+            continue
+        if not detect(get_html(link)) == 'en':
+            continue
+        links.add(link)
     return links
 
 def main(): 
