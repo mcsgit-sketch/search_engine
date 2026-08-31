@@ -1,12 +1,13 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}
 
-<html lang="en"> 
 
-	<head> 
 
-		<title>qsearch</title>
-		<style>
-			div {
+
+
+{% block style %}
+
+
+		div {
 				position: fixed;
 				top:50%;
 				left:50%;
@@ -15,15 +16,16 @@
 				display: flex; 
 				gap: 5px;
 			}
-		</style>
-	</head>
+{% endblock %}
 
-	<body> 
-		<form>
+
+{% block body %}
+	<form>
 		<div>
 		<input style="width: 500px" type="text" placeholder="Search.." name="search">
 		<input type="submit">
 		</div>
-		</form>
-	</body> 
-</html> 
+	</form>
+{% endblock %}
+
+	
