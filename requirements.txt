@@ -1,0 +1,7 @@
+Flask
+BeautifulSoup
+Requests
+urllib.parse
+sqlite3
+
+
