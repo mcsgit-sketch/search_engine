@@ -9,7 +9,7 @@
 
 		div {
 				position: fixed;
-				top:50%;
+				top:5%;
 				left:50%;
 				translate: -50% -50%;
 
@@ -20,9 +20,9 @@
 
 
 {% block body %}
-	<form method = "post">
+	<form method="post">
 		<div>
-		<input style="width: 500px" type="text" placeholder="Search.." name="search">
+			<input style="width: 500px" type="text" value="{{search}}" name="search">
 		<input type="submit">
 		</div>
 	</form>
