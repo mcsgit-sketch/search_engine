@@ -25,12 +25,14 @@ def get_html(url):
 
 def parse_html(html):
     soup = BeautifulSoup(html, 'html.parser')
+    return soup
 
 def get_title(soup): 
-    if soup.title is None: 
-        return None
-    return soup.title.string
+    title = ""
+    if soup.title is not None: 
+        title = soup.title.string
+    return title
 
 def get_text(soup):
-    return soup.get_text()
+    return soup.get_text(" ", strip=True)
 

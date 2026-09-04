@@ -9,7 +9,7 @@ def create_db():
     
     cur.execute("""CREATE TABLE IF NOT EXISTS 
                 webpages(
-                id INTEGER AUTOCREMENT PRIMARY KEY,
+                id INTEGER PRIMARY KEY,
                 url TEXT UNIQUE,
                 title TEXT, 
                 text TEXT)""")
